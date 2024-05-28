@@ -52,21 +52,10 @@ function getCurrentDateTimeDay() {
     };
 }
 
-function clock(action, employee_id, latitude, longitude) {
+function clock(action, employee_id) {
     const key = Session.getTemporaryActiveUserKey();
     const { date, time, day } = getCurrentDateTimeDay();
-    data = {
-        id: UUID(),
-        type: action,
-        employee_id,
-        time,
-        date,
-        day,
-        key,
-        latitude,
-        longitude,
-        lat_long: `${latitude} ${longitude}`,
-    };
+    data = { id: UUID(), type: action, employee_id, time, date, day, key };
     const sheet =
         SpreadsheetApp.getActiveSpreadsheet().getSheetByName(TIMESHEET_TABLE);
 
